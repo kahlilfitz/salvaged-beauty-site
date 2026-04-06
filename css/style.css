@@ -278,6 +278,25 @@ img {
   letter-spacing: 0.04em;
 }
 
+.item-inquire {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+  text-decoration: none;
+  border-bottom: 1px solid var(--copper);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.item-inquire:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
 /* ─── ABOUT ──────────────────────────────────────────── */
 
 .about {
