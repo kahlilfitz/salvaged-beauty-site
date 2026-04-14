@@ -459,6 +459,39 @@ img {
   min-height: 1.5rem;
 }
 
+/* ─── RETURNS ────────────────────────────────────────── */
+
+.returns {
+  padding: 6rem 5vw;
+  text-align: center;
+  background: var(--cream);
+}
+
+.returns-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.returns .section-label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.returns h2 {
+  margin-bottom: 2rem;
+}
+
+.returns p {
+  font-size: 1rem;
+  color: var(--brown);
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+
+.returns p:last-child {
+  margin-bottom: 0;
+}
+
 /* ─── FOOTER ─────────────────────────────────────────── */
 
 .site-footer {
