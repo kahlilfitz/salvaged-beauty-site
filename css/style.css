@@ -337,6 +337,43 @@ img {
   letter-spacing: 0.04em;
 }
 
+.item-era {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--copper);
+  margin-bottom: 0.4rem;
+}
+
+.item-desc {
+  font-size: 0.78rem;
+  color: var(--brown);
+  line-height: 1.6;
+  letter-spacing: 0;
+  margin: 0.4rem 0 0.75rem;
+}
+
+.item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.5rem;
+}
+
+.item-price {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--warm-black);
+  font-weight: 500;
+}
+
+.item-fit {
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* ─── ABOUT ──────────────────────────────────────────── */
 
 .about {
