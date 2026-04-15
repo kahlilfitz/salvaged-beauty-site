@@ -213,6 +213,8 @@ img {
 
 .item-card {
   background: var(--cream);
+  display: flex;
+  flex-direction: column;
 }
 
 .item-image-wrap {
@@ -321,6 +323,9 @@ img {
 .item-info {
   padding: 0.85rem 0.75rem 1rem;
   border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .item-info h3 {
@@ -357,7 +362,8 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-top: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
 }
 
 .item-price {
