@@ -284,8 +284,9 @@
       <span class="section-label">Stay connected</span>
       <h2>New arrivals, first.</h2>
       <p>One-of-a-kind pieces move fast. Get on the list and be the first to know when new finds drop.</p>
-      <form class="notify-form" onsubmit="handleNotify(event)">
-        <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+      <form class="notify-form" name="notify" netlify onsubmit="handleNotify(event)">
+        <input type="hidden" name="form-name" value="notify">
+        <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required>
         <button type="submit">Join the List</button>
       </form>
       <p class="notify-confirm" id="notify-confirm" aria-live="polite"></p>
@@ -349,9 +350,20 @@
   <script>
     function handleNotify(e) {
       e.preventDefault();
+      const form = e.target;
       const confirm = document.getElementById('notify-confirm');
-      confirm.textContent = "You're on the list — we'll send new arrivals your way.";
-      e.target.reset();
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(() => {
+          confirm.textContent = "You're on the list — we'll send new arrivals your way.";
+          form.reset();
+        })
+        .catch(() => {
+          confirm.textContent = "Something went wrong. Please try again.";
+        });
     }
   </script>
 
