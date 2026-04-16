@@ -349,8 +349,12 @@
   <script>
     function handleNotify(e) {
       e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      const subject = encodeURIComponent('Notify Me – Salvaged Beauty');
+      const body = encodeURIComponent('Please add me to the Salvaged Beauty notify list.\n\nEmail: ' + email);
+      window.location.href = 'mailto:info@salvaged-beauty.com?subject=' + subject + '&body=' + body;
       const confirm = document.getElementById('notify-confirm');
-      confirm.textContent = "You're on the list — we'll send new arrivals your way.";
+      confirm.textContent = "Almost there — just send the email that just opened and you're on the list.";
       e.target.reset();
     }
   </script>
