@@ -88,6 +88,7 @@
             <span class="item-price">$145.00</span>
             <span class="item-fit">Best fit: XS</span>
           </div>
+          <button class="btn-buy" data-price-id="price_1TNh4W3UZrkFCBnw3WGEyXtD">Buy Now</button>
         </div>
       </article>
 
@@ -344,6 +345,22 @@
 
       wrap.querySelector('.img-prev').addEventListener('click', e => { e.preventDefault(); goTo(current - 1); });
       wrap.querySelector('.img-next').addEventListener('click', e => { e.preventDefault(); goTo(current + 1); });
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll('.btn-buy').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        btn.textContent = 'Redirecting…';
+        const res = await fetch('/.netlify/functions/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ priceId: btn.dataset.priceId })
+        });
+        const { url } = await res.json();
+        window.location.href = url;
+      });
     });
   </script>
 

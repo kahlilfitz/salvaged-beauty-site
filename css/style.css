@@ -153,6 +153,31 @@ img {
   background: var(--copper);
 }
 
+.btn-buy {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--warm-black);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s;
+  width: 100%;
+}
+
+.btn-buy:hover {
+  background: var(--copper);
+}
+
+.btn-buy:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .hero-image {
   position: relative;
   overflow: hidden;
