@@ -43,6 +43,7 @@
 
     <nav class="nav-right">
       <a href="#notify">Join the List</a>
+      <button class="cart-btn" id="cart-open" aria-label="Open cart">Cart <span id="cart-count" class="cart-count" hidden>0</span></button>
     </nav>
   </header>
 
@@ -88,7 +89,7 @@
             <span class="item-price">$145.00</span>
             <span class="item-fit">Best fit: XS</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNh4W3UZrkFCBnw3WGEyXtD">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNh4W3UZrkFCBnw3WGEyXtD" data-name="Tory Burch Military Wool Jacket" data-price-cents="14500" data-image="images/clothing/tory-burch-jacket/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -109,7 +110,7 @@
             <span class="item-price">$95.00</span>
             <span class="item-fit">Best fit: S–M</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNuFu3UZrkFCBnwyX9Rw6kD">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNuFu3UZrkFCBnwyX9Rw6kD" data-name="1980s Donna Toran Graphic Sweater Dress" data-price-cents="9500" data-image="images/clothing/donna-toran-sweater-dress/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -129,7 +130,7 @@
             <span class="item-price">$125.00</span>
             <span class="item-fit">Best fit: XS</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNuPB3UZrkFCBnwAfs2ghpE">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNuPB3UZrkFCBnwAfs2ghpE" data-name="Goldsign Ivory Utility Jumpsuit" data-price-cents="12500" data-image="images/clothing/white-denim-jacket/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -149,7 +150,7 @@
             <span class="item-price">$78.00</span>
             <span class="item-fit">Best fit: XS–S</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNuW13UZrkFCBnwWzi2qNR4">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNuW13UZrkFCBnwWzi2qNR4" data-name="1960s/70s Red &amp; Floral Mixed Print Dress" data-price-cents="7800" data-image="images/clothing/coral-floral-dress/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -170,7 +171,7 @@
             <span class="item-price">$110.00</span>
             <span class="item-fit">Best fit: S–M</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNukV3UZrkFCBnws8jpO57y">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNukV3UZrkFCBnws8jpO57y" data-name="1960s Mister Max Suede &amp; Knit Bomber" data-price-cents="11000" data-image="images/clothing/sage-bomber/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -191,7 +192,7 @@
             <span class="item-price">$88.00</span>
             <span class="item-fit">Best fit: S</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNupJ3UZrkFCBnw3ft8hyQn">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNupJ3UZrkFCBnw3ft8hyQn" data-name="Late 70s/Early 80s Black Ruffle Jumpsuit" data-price-cents="8800" data-image="images/clothing/black-stripe-jumpsuit/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -211,7 +212,7 @@
             <span class="item-price">$72.00</span>
             <span class="item-fit">Best fit: S–M</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNutn3UZrkFCBnw2eHMlwFk">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNutn3UZrkFCBnw2eHMlwFk" data-name="1970s Vintage Yellow Cotton Day Dress" data-price-cents="7200" data-image="images/clothing/mustard-dress/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -231,7 +232,7 @@
             <span class="item-price">$68.00</span>
             <span class="item-fit">Best fit: XS–S</span>
           </div>
-          <button class="btn-buy" data-price-id="price_1TNv4u3UZrkFCBnwcyve5BuA">Buy Now</button>
+          <button class="btn-add-cart" data-price-id="price_1TNv4u3UZrkFCBnwcyve5BuA" data-name="Late 60s/Early 70s Mint Green Pleated Dress" data-price-cents="6800" data-image="images/clothing/mint-belted-dress/1.jpg">Add to Cart</button>
         </div>
       </article>
 
@@ -314,6 +315,26 @@
     <p class="footer-copy">&copy; 2025 Salvaged Beauty</p>
   </footer>
 
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-header">
+      <span class="section-label">Your Cart</span>
+      <button id="cart-close" class="cart-close" aria-label="Close cart">&#215;</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div id="cart-empty" class="cart-empty">
+      <p>Your cart is empty.</p>
+    </div>
+    <div id="cart-footer" class="cart-footer" hidden>
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-subtotal-amount"></span>
+      </div>
+      <button id="cart-checkout" class="btn-primary" style="width:100%;text-align:center;">Checkout</button>
+    </div>
+  </aside>
+
   <script>
     document.querySelectorAll('.item-image-wrap').forEach(wrap => {
       const slides = wrap.querySelectorAll('img.slide');
@@ -335,14 +356,112 @@
   </script>
 
   <script>
-    document.querySelectorAll('.btn-buy').forEach(btn => {
-      btn.addEventListener('click', async () => {
+    let cart = JSON.parse(localStorage.getItem('sb-cart') || '[]');
+
+    function saveCart() {
+      localStorage.setItem('sb-cart', JSON.stringify(cart));
+    }
+
+    function addToCart(priceId, name, priceCents, image) {
+      if (cart.find(i => i.priceId === priceId)) return;
+      cart.push({ priceId, name, priceCents, image });
+      saveCart();
+      renderCart();
+      setButtonState(priceId, true);
+      openCart();
+    }
+
+    function removeFromCart(priceId) {
+      cart = cart.filter(i => i.priceId !== priceId);
+      saveCart();
+      renderCart();
+      setButtonState(priceId, false);
+    }
+
+    function setButtonState(priceId, inCart) {
+      const btn = document.querySelector(`.btn-add-cart[data-price-id="${priceId}"]`);
+      if (!btn) return;
+      btn.textContent = inCart ? 'Added' : 'Add to Cart';
+      btn.classList.toggle('in-cart', inCart);
+    }
+
+    function renderCart() {
+      const itemsEl = document.getElementById('cart-items');
+      const emptyEl = document.getElementById('cart-empty');
+      const footerEl = document.getElementById('cart-footer');
+      const countEl = document.getElementById('cart-count');
+
+      countEl.textContent = cart.length;
+      countEl.hidden = cart.length === 0;
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = '';
+        emptyEl.hidden = false;
+        footerEl.hidden = true;
+        return;
+      }
+
+      emptyEl.hidden = true;
+      footerEl.hidden = false;
+
+      itemsEl.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="" class="cart-item-image">
+          <div class="cart-item-info">
+            <p class="cart-item-name">${item.name}</p>
+            <p class="cart-item-price">$${(item.priceCents / 100).toFixed(2)}</p>
+          </div>
+          <button class="cart-item-remove" data-price-id="${item.priceId}" aria-label="Remove">&#215;</button>
+        </div>
+      `).join('');
+
+      const subtotal = cart.reduce((sum, i) => sum + i.priceCents, 0);
+      document.getElementById('cart-subtotal-amount').textContent = `$${(subtotal / 100).toFixed(2)}`;
+
+      itemsEl.querySelectorAll('.cart-item-remove').forEach(btn => {
+        btn.addEventListener('click', () => removeFromCart(btn.dataset.priceId));
+      });
+    }
+
+    function openCart() {
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cart-drawer').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart();
+      cart.forEach(item => setButtonState(item.priceId, true));
+
+      document.getElementById('cart-open').addEventListener('click', openCart);
+      document.getElementById('cart-close').addEventListener('click', closeCart);
+      document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+      document.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+          addToCart(
+            btn.dataset.priceId,
+            btn.dataset.name,
+            parseInt(btn.dataset.priceCents),
+            btn.dataset.image
+          );
+        });
+      });
+
+      document.getElementById('cart-checkout').addEventListener('click', async () => {
+        const btn = document.getElementById('cart-checkout');
         btn.disabled = true;
         btn.textContent = 'Redirecting…';
         const res = await fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ priceId: btn.dataset.priceId })
+          body: JSON.stringify({ lineItems: cart.map(i => ({ priceId: i.priceId, quantity: 1 })) })
         });
         const { url } = await res.json();
         window.location.href = url;
