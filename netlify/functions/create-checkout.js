@@ -5,11 +5,11 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const { priceId } = JSON.parse(event.body);
+  const { lineItems } = JSON.parse(event.body);
 
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
-    line_items: [{ price: priceId, quantity: 1 }],
+    line_items: lineItems.map(({ priceId, quantity }) => ({ price: priceId, quantity })),
     shipping_address_collection: {
       allowed_countries: ['US'],
     },
