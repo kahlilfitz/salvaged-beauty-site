@@ -7,14 +7,16 @@ exports.handler = async (event) => {
 
   const { lineItems } = JSON.parse(event.body);
 
+  const baseUrl = process.env.URL || `https://${event.headers.host}`;
+
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: lineItems.map(({ priceId, quantity }) => ({ price: priceId, quantity })),
     shipping_address_collection: {
       allowed_countries: ['US'],
     },
-    success_url: `${process.env.URL}/success.html`,
-    cancel_url: `${process.env.URL}/#shop`,
+    success_url: `${baseUrl}/success.html`,
+    cancel_url: `${baseUrl}/#shop`,
   });
 
   return {
