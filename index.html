@@ -460,8 +460,15 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ lineItems: cart.map(i => ({ priceId: i.priceId, quantity: 1 })) })
         });
-        const { url } = await res.json();
-        window.location.href = url;
+        const data = await res.json();
+        if (!res.ok || !data.url) {
+          console.error('Checkout error:', data.error);
+          btn.disabled = false;
+          btn.textContent = 'Checkout';
+          alert('Something went wrong. Please try again.');
+          return;
+        }
+        window.location.href = data.url;
       });
     });
   </script>

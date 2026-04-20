@@ -5,22 +5,34 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const { lineItems } = JSON.parse(event.body);
+  try {
+    const { lineItems } = JSON.parse(event.body);
 
-  const baseUrl = process.env.URL || `https://${event.headers.host}`;
+    if (!lineItems || !lineItems.length) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'No line items' }) };
+    }
 
-  const session = await stripe.checkout.sessions.create({
-    mode: 'payment',
-    line_items: lineItems.map(({ priceId, quantity }) => ({ price: priceId, quantity })),
-    shipping_address_collection: {
-      allowed_countries: ['US'],
-    },
-    success_url: `${baseUrl}/success.html`,
-    cancel_url: `${baseUrl}/#shop`,
-  });
+    const baseUrl = process.env.URL || `https://${event.headers.host}`;
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ url: session.url }),
-  };
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      line_items: lineItems.map(({ priceId, quantity }) => ({ price: priceId, quantity })),
+      shipping_address_collection: {
+        allowed_countries: ['US'],
+      },
+      success_url: `${baseUrl}/success.html`,
+      cancel_url: `${baseUrl}/#shop`,
+    });
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ url: session.url }),
+    };
+  } catch (err) {
+    console.error('Stripe error:', err.message);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message }),
+    };
+  }
 };
